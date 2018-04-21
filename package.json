@@ -5,5 +5,7 @@
   "repository": "https://github.com/maksimyurkov/ht-api-helper-functions",
   "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "path": "^0.12.7"
+  }
 }
