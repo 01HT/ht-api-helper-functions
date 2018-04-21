@@ -1,5 +1,5 @@
-import { createThumbnail } from "./createThumbnail.js";
-import { getPublicURL } from "./getPublicURL.js";
+var createThumbnail = require("./createThumbnail.js");
+var getPublicURL = require("./getPublicURL.js");
 
 module.exports = {
   createThumbnail: createThumbnail,

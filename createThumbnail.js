@@ -1,6 +1,6 @@
 "use strict";
-import { path } from "path";
-import { getPublicURL } from "./getPublicURL.js";
+var path = require("path");
+var getPublicURL = require("./getPublicURL.js");
 
 export async function createThumbnail(width, fileName, metadata) {
   try {
