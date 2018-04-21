@@ -1,4 +1,7 @@
 import { createThumbnail } from "./createThumbnail.js";
 import { getPublicURL } from "./getPublicURL.js";
 
-export { createThumbnail, getPublicURL };
+module.exports = {
+  createThumbnail: createThumbnail,
+  getPublicURL: getPublicURL
+};
