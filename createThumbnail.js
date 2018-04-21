@@ -2,7 +2,7 @@
 var path = require("path");
 var getPublicURL = require("./getPublicURL.js");
 
-export async function createThumbnail(width, fileName, metadata) {
+module.exports = async function createThumbnail(width, fileName, metadata) {
   try {
     const options = {};
     if (metadata) options.metadata = metadata;
@@ -38,4 +38,4 @@ export async function createThumbnail(width, fileName, metadata) {
   } catch (error) {
     throw new Error("createThumbnail: " + error.message);
   }
-}
+};

@@ -1,3 +1,4 @@
+"use strict";
 var createThumbnail = require("./createThumbnail.js");
 var getPublicURL = require("./getPublicURL.js");
 
