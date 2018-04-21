@@ -1,5 +1,6 @@
-module.exports = function getPublicURL() {
+"use strict";
+export function getPublicURL() {
   return `https://storage.googleapis.com/api-01-ht.appspot.com/${encodeURIComponent(
     filename
   )}`;
-};
+}
