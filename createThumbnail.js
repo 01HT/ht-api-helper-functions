@@ -2,7 +2,7 @@
 var path = require("path");
 var getPublicURL = require("./getPublicURL.js");
 
-module.exports = async function createThumbnail(width, fileName, metadata) {
+module.exports = function createThumbnail(width, fileName, metadata) {
   try {
     const options = {};
     if (metadata) options.metadata = metadata;
@@ -33,8 +33,9 @@ module.exports = async function createThumbnail(width, fileName, metadata) {
       thumbnailUploadStream.on("finish", resolve).on("error", reject)
     );
 
-    await streamAsPromise;
-    return getPublicURL(thumbFileName);
+    return streamAsPromise.then(_ => {
+      return getPublicURL(thumbFileName);
+    });
   } catch (error) {
     throw new Error("createThumbnail: " + error.message);
   }
