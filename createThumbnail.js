@@ -1,12 +1,15 @@
-module.exports.createThumbnail = async function(
-  width,
-  fileName,
-  thumbFileName,
-  metadata
-) {
+var path = require("path");
+var getPublicURL = require("./getPublicURL.js");
+
+module.exports = async function createThumbnail(width, fileName, metadata) {
   try {
     const options = {};
     if (metadata) options.metadata = metadata;
+
+    const parsedFilename = path.parse(fileName);
+    const thumbFileName = `${parsedFilename.root}${parsedFilename.dir}/${
+      parsedFilename.name
+    }-${width}w${parsedFilename.ext}`;
 
     // Create write stream for uploading thumbnail
     const thumbnailUploadStream = bucket
@@ -30,9 +33,7 @@ module.exports.createThumbnail = async function(
     );
 
     await streamAsPromise;
-    return `https://storage.googleapis.com/api-01-ht.appspot.com/${encodeURIComponent(
-      thumbFileName
-    )}`;
+    return getPublicURL(thumbFileName);
   } catch (error) {
     throw new Error("createThumbnail: " + error.message);
   }
