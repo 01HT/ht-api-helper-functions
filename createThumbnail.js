@@ -27,7 +27,7 @@ module.exports = function createThumbnail(width, fileName, metadata) {
 
     // Create Sharp pipeline for resizing the image and use pipe to read from bucket read stream
     const pipeline = sharp();
-    pipeline.
+    pipeline
       .toFormat("jpeg")
       .resize(width)
       .max()
