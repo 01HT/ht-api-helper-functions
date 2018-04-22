@@ -22,7 +22,7 @@ module.exports = function createThumbnail(width, fileName, metadata) {
     const parsedFilename = path.parse(fileName);
     const thumbFileName = `${parsedFilename.root}${parsedFilename.dir}/${
       parsedFilename.name
-    }-${width}w${parsedFilename.ext}`;
+    }-${width}w.jpg`;
 
     // Create write stream for uploading thumbnail
     const thumbnailUploadStream = bucket
@@ -31,6 +31,7 @@ module.exports = function createThumbnail(width, fileName, metadata) {
 
     // Create Sharp pipeline for resizing the image and use pipe to read from bucket read stream
     const pipeline = sharp();
+
     pipeline
       .resize(width)
       .max()
