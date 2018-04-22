@@ -1,6 +1,11 @@
 "use strict";
 var path = require("path");
 var getPublicURL = require("./getPublicURL.js");
+try {
+  admin.initializeApp();
+} catch (e) {}
+
+const bucket = admin.storage().bucket();
 
 module.exports = function createThumbnail(width, fileName, metadata) {
   try {
@@ -37,6 +42,7 @@ module.exports = function createThumbnail(width, fileName, metadata) {
       return getPublicURL(thumbFileName);
     });
   } catch (error) {
+    console.log("createThumbnail: " + error.message);
     throw new Error("createThumbnail: " + error.message);
   }
 };
