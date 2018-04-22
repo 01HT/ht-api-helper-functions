@@ -5,5 +5,10 @@
   "repository": "https://github.com/maksimyurkov/ht-api-helper-functions",
   "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "firebase-admin": "^5.12.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "sharp": "0.20.1"
+  }
 }
