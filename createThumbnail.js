@@ -12,7 +12,11 @@ const bucket = admin.storage().bucket();
 
 module.exports = function createThumbnail(width, fileName, metadata) {
   try {
-    const options = {};
+    const options = {
+      metadata = {
+        contentType: "image/jpeg"
+      }
+    };
     if (metadata) options.metadata = metadata;
 
     const parsedFilename = path.parse(fileName);
@@ -26,11 +30,14 @@ module.exports = function createThumbnail(width, fileName, metadata) {
       .createWriteStream(options);
 
     // Create Sharp pipeline for resizing the image and use pipe to read from bucket read stream
-    const pipeline = sharp();
+    const pipeline = sharp()
     pipeline
-      .toFormat("jpeg")
       .resize(width)
       .max()
+      .jpeg({
+        quality: 100,
+        progressive: true
+      })
       .pipe(thumbnailUploadStream);
 
     bucket
