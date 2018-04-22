@@ -10,7 +10,7 @@ try {
 
 const bucket = admin.storage().bucket();
 
-module.exports = function createThumbnail(bucket, width, fileName, metadata) {
+module.exports = function createThumbnail(width, fileName, metadata) {
   try {
     const options = {};
     if (metadata) options.metadata = metadata;
