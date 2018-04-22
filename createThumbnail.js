@@ -1,13 +1,16 @@
 "use strict";
+var admin = require("firebase-admin");
 var path = require("path");
+var sharp = require("sharp");
 var getPublicURL = require("./getPublicURL.js");
+
 try {
   admin.initializeApp();
 } catch (e) {}
 
 const bucket = admin.storage().bucket();
 
-module.exports = function createThumbnail(width, fileName, metadata) {
+module.exports = function createThumbnail(bucket, width, fileName, metadata) {
   try {
     const options = {};
     if (metadata) options.metadata = metadata;
