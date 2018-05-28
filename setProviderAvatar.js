@@ -4,7 +4,8 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import * as util from "util";
-import * as rp from "request-promise";
+// import * as rp from "request-promise";
+var rp = require("request-promise")
 import { createAvatarThumbnails } from "./createAvatarThumbnails.js";
 
 try {
