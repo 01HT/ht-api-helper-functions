@@ -1,8 +1,8 @@
 "use strict";
-var admin = require("firebase-admin");
-var path = require("path");
-var sharp = require("sharp");
-var getPublicURL = require("./getPublicURL.js");
+import * as admin from "firebase-admin";
+import * as path from "path";
+import * as sharp from "sharp";
+import getPublicURL from "./getPublicURL.js";
 
 try {
   admin.initializeApp();
@@ -10,7 +10,7 @@ try {
 
 const bucket = admin.storage().bucket();
 
-module.exports = function createThumbnail(width, fileName, metadata) {
+async function createThumbnail(width, fileName, metadata) {
   try {
     const options = {
       metadata: {
@@ -54,7 +54,8 @@ module.exports = function createThumbnail(width, fileName, metadata) {
       return getPublicURL(thumbFileName);
     });
   } catch (error) {
-    console.log("createThumbnail: " + error.message);
     throw new Error("createThumbnail: " + error.message);
   }
-};
+}
+
+export { createThumbnail };

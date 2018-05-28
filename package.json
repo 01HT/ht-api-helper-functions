@@ -1,13 +1,21 @@
 {
   "name": "ht-api-helper-functions",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/maksimyurkov/ht-api-helper-functions",
   "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "*babel *.js --out-dir lib"
+  },
   "dependencies": {
     "firebase-admin": "^5.12.0",
     "path": "^0.12.7",
-    "sharp": "0.20.1"
+    "sharp": "0.20.1",
+    "fs": "0.0.1-security",
+    "os": "^0.1.1",
+    "util": "^0.10.3",
+    "request-promise": "^4.2.2"
   }
 }
+
