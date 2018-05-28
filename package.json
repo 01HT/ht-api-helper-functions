@@ -6,7 +6,7 @@
   "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel *.js --out-dir lib"
+    "install": "babel *.js --out-dir lib"
   },
   "dependencies": {
     "firebase-admin": "^5.12.0",
