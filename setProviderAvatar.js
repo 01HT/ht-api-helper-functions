@@ -13,7 +13,7 @@ try {
 
 const bucket = admin.storage().bucket();
 
-async function setProviderAvatar(avatarURL, userId) {
+export default async function setProviderAvatar(avatarURL, userId) {
   try {
     let tempFilePath = path.join(os.tmpdir(), `${userId}-avatar-temp-file`);
 
@@ -41,5 +41,3 @@ async function setProviderAvatar(avatarURL, userId) {
     throw new Error("setProviderAvatar: " + error.message);
   }
 }
-
-export { setProviderAvatar };

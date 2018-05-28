@@ -10,7 +10,7 @@ try {
 
 const bucket = admin.storage().bucket();
 
-async function createThumbnail(width, fileName, metadata) {
+export default async function createThumbnail(width, fileName, metadata) {
   try {
     const options = {
       metadata: {
@@ -57,5 +57,3 @@ async function createThumbnail(width, fileName, metadata) {
     throw new Error("createThumbnail: " + error.message);
   }
 }
-
-export { createThumbnail };

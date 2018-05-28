@@ -1,11 +1,12 @@
-var createAvatarThumbnails = require("./createAvatarThumbnails.js");
-var createThumbnail = require("./createThumbnail.js");
-var getPublicURL = require("./getPublicURL.js");
-var setProviderAvatar = require("./setProviderAvatar.js");
+"use strict";
+import createAvatarThumbnails from "./createAvatarThumbnails.js";
+import createThumbnail from "./createThumbnail.js";
+import getPublicURL from "./getPublicURL.js";
+import setProviderAvatar from "./setProviderAvatar.js";
 
-module.exports = {
-  createAvatarThumbnails: createAvatarThumbnails,
-  createThumbnail: createThumbnail,
-  getPublicURL: getPublicURL,
-  setProviderAvatar: setProviderAvatar
+export {
+  createAvatarThumbnails,
+  createThumbnail,
+  getPublicURL,
+  setProviderAvatar
 };
