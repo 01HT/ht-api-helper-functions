@@ -1,7 +1,7 @@
 "use strict";
 const sizes = [256, 128, 64, 32];
 
-export default async function createAvatarThumbnails(userId) {
+async function createAvatarThumbnails(userId) {
   try {
     let fileName = `users/${userId}/avatar.jpg`;
     const promises = [];
@@ -13,3 +13,5 @@ export default async function createAvatarThumbnails(userId) {
     throw new Error("createAvatarThumbnails: " + error.message);
   }
 };
+
+export { createAvatarThumbnails }

@@ -16,7 +16,7 @@ try {
 
 const bucket = admin.storage().bucket();
 
-export default async function setProviderAvatar(avatarURL, userId) {
+async function setProviderAvatar(avatarURL, userId) {
   try {
     let tempFilePath = path.join(os.tmpdir(), `${userId}-avatar-temp-file`);
 
@@ -34,7 +34,7 @@ export default async function setProviderAvatar(avatarURL, userId) {
       contentType: "image/jpeg"
     };
     await bucket.upload(tempFilePath, {
-      destination: `users/${userId}/photo.jpg`,
+      destination: `users/${userId}/avatar.jpg`,
       metadata: metadata
     });
     fs.unlinkSync(tempFilePath);
@@ -44,3 +44,5 @@ export default async function setProviderAvatar(avatarURL, userId) {
     throw new Error("setProviderAvatar: " + error.message);
   }
 }
+
+export { setProviderAvatar }
