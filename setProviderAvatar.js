@@ -3,9 +3,10 @@ import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import * as util from "util";
+// import * as util from "util";
 // import * as rp from "request-promise";
-var rp = require("request-promise")
+var util = require("util");
+var rp = require("request-promise");
 import { createAvatarThumbnails } from "./createAvatarThumbnails.js";
 
 try {
