@@ -3,9 +3,6 @@ import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-// import * as util from "util";
-// import * as rp from "request-promise";
-// var util = require("util");
 var { promisify } = require("es6-promisify");
 var rp = require("request-promise");
 import { createAvatarThumbnails } from "./createAvatarThumbnails.js";
@@ -39,7 +36,7 @@ async function setProviderAvatar(avatarURL, userId) {
     });
     fs.unlinkSync(tempFilePath);
 
-    return createAvatarThumbnails(userId);
+    await createAvatarThumbnails(userId);
   } catch (error) {
     throw new Error("setProviderAvatar: " + error.message);
   }
