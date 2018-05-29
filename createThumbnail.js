@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 import * as path from "path";
 // import * as sharp from "sharp";
 var sharp = require("sharp");
-import getPublicURL from "./getPublicURL.js";
+import { getPublicURL } from "./getPublicURL.js";
 
 try {
   admin.initializeApp();
