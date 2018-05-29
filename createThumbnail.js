@@ -35,6 +35,8 @@ async function createThumbnail(width, fileName, metadata) {
     pipeline
       .resize(width)
       .max()
+      .background({ r: 255, g: 255, b: 255, alpha: 1 })
+      .flatten()
       .jpeg({
         quality: 100,
         progressive: true
@@ -58,4 +60,4 @@ async function createThumbnail(width, fileName, metadata) {
   }
 }
 
-export { createThumbnail }
+export { createThumbnail };
