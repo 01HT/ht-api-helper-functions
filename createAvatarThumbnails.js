@@ -1,4 +1,6 @@
 "use strict";
+import { createThumbnail } from "./createThumbnail.js";
+
 const sizes = [256, 128, 64, 32];
 
 async function createAvatarThumbnails(userId) {
