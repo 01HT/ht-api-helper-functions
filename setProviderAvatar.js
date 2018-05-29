@@ -5,7 +5,8 @@ import * as os from "os";
 import * as path from "path";
 // import * as util from "util";
 // import * as rp from "request-promise";
-var util = require("util");
+// var util = require("util");
+var { promisify } = require("es6-promisify");
 var rp = require("request-promise");
 import { createAvatarThumbnails } from "./createAvatarThumbnails.js";
 
@@ -26,7 +27,7 @@ export default async function setProviderAvatar(avatarURL, userId) {
 
     let file = await rp(options);
 
-    const fs_writeFile = util.promisify(fs.writeFile);
+    const fs_writeFile = promisify(fs.writeFile);
     await fs_writeFile(tempFilePath, file, "binary");
 
     const metadata = {
