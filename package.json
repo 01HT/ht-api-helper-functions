@@ -1,8 +1,8 @@
 {
-  "name": "ht-api-helper-functions",
+  "name": "@01ht/ht-api-helper-functions",
   "version": "1.0.0",
   "main": "lib/index.js",
-  "repository": "https://github.com/maksimyurkov/ht-api-helper-functions",
+  "repository": "https://github.com/01ht/ht-api-helper-functions",
   "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,8 @@
     "fs": "0.0.1-security",
     "os": "^0.1.1",
     "es6-promisify": "^6.0.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

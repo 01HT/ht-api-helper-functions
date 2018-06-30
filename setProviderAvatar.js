@@ -17,23 +17,26 @@ async function setProviderAvatar(avatarURL, userId) {
   try {
     let tempFilePath = path.join(os.tmpdir(), `${userId}-avatar-temp-file`);
 
-    let options = {
+    let file = await rp({
       uri: avatarURL,
       encoding: "binary"
-    };
-
-    let file = await rp(options);
+    });
 
     const fs_writeFile = promisify(fs.writeFile);
     await fs_writeFile(tempFilePath, file, "binary");
 
-    const metadata = {
-      contentType: "image/jpeg"
-    };
-    await bucket.upload(tempFilePath, {
+    const options = {
       destination: `users/${userId}/avatar.jpg`,
-      metadata: metadata
-    });
+      metadata: {
+        contentType: "image/jpeg",
+        cacheControl: "no-cache"
+      }
+    };
+
+    await bucket.upload(tempFilePath, options);
+
+    // Fix remove file lock on windows
+    sharp.cache(false);
     fs.unlinkSync(tempFilePath);
 
     await createAvatarThumbnails(userId);
@@ -42,4 +45,4 @@ async function setProviderAvatar(avatarURL, userId) {
   }
 }
 
-export { setProviderAvatar }
+export { setProviderAvatar };

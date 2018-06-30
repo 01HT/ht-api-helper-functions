@@ -14,6 +14,6 @@ async function createAvatarThumbnails(userId) {
   } catch (error) {
     throw new Error("createAvatarThumbnails: " + error.message);
   }
-};
+}
 
-export { createAvatarThumbnails }
+export { createAvatarThumbnails };

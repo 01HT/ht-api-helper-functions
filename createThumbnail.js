@@ -1,8 +1,11 @@
 "use strict";
 import * as admin from "firebase-admin";
 import * as path from "path";
+import * as fs from "fs";
+import * as os from "os";
 var sharp = require("sharp");
 import { getPublicURL } from "./getPublicURL.js";
+const uuidv4 = require("uuid/v4");
 
 try {
   admin.initializeApp();
@@ -12,49 +15,45 @@ const bucket = admin.storage().bucket();
 
 async function createThumbnail(width, fileName, metadata) {
   try {
-    const options = {
-      metadata: {
-        contentType: "image/jpeg"
-      }
-    };
-    if (metadata) options.metadata = metadata;
+    const data = await bucket.file(fileName).download();
+    let file = data[0];
+
+    const tempOutputFile = path.join(
+      os.tmpdir(),
+      `temp-create-thumbnail-file-output-${uuidv4()}.jpg`
+    );
+
+    await sharp(file)
+      .resize(width)
+      .max()
+      .background({ r: 255, g: 255, b: 255, alpha: 1 })
+      .flatten()
+      .jpeg({ quality: 100, progressive: true })
+      .toFile(tempOutputFile);
 
     const parsedFilename = path.parse(fileName);
     const thumbFileName = `${parsedFilename.root}${parsedFilename.dir}/${
       parsedFilename.name
     }-${width}w.jpg`;
 
-    // Create write stream for uploading thumbnail
-    const thumbnailUploadStream = bucket
-      .file(thumbFileName)
-      .createWriteStream(options);
+    const options = {
+      destination: thumbFileName,
+      metadata: {
+        contentType: "image/jpeg",
+        cacheControl: "no-cache"
+      }
+    };
 
-    // Create Sharp pipeline for resizing the image and use pipe to read from bucket read stream
-    const pipeline = sharp();
+    if (metadata) options.metadata = metadata;
 
-    pipeline
-      .resize(width)
-      .max()
-      .background({ r: 255, g: 255, b: 255, alpha: 1 })
-      .flatten()
-      .jpeg({
-        quality: 100,
-        progressive: true
-      })
-      .pipe(thumbnailUploadStream);
+    await bucket.upload(`${tempOutputFile}`, options);
 
-    bucket
-      .file(fileName)
-      .createReadStream()
-      .pipe(pipeline);
+    // Fix remove file lock on windows
+    sharp.cache(false);
 
-    const streamAsPromise = new Promise((resolve, reject) =>
-      thumbnailUploadStream.on("finish", resolve).on("error", reject)
-    );
+    fs.unlinkSync(tempOutputFile);
 
-    return streamAsPromise.then(_ => {
-      return getPublicURL(thumbFileName);
-    });
+    return getPublicURL(thumbFileName);
   } catch (error) {
     throw new Error("createThumbnail: " + error.message);
   }

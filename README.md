@@ -1,1 +1,0 @@
-# ht-api-helper-functions
