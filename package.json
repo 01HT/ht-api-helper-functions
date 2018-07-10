@@ -1,10 +1,10 @@
 {
   "name": "@01ht/ht-api-helper-functions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
-  "repository": "https://github.com/01ht/ht-api-helper-functions",
-  "author": "maksimyurkov <yurkov.maksim.sergeevich@gmail.com>",
-  "license": "MIT",
+  "repository": "01ht/ht-api-helper-functions",
+  "author": "01ht Ltd",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "babel *.js --out-dir lib"
   },
