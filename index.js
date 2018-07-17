@@ -1,12 +1,7 @@
 "use strict";
-import { createAvatarThumbnails } from "./createAvatarThumbnails.js";
 import { createThumbnail } from "./createThumbnail.js";
 import { getPublicURL } from "./getPublicURL.js";
-import { setProviderAvatar } from "./setProviderAvatar.js";
+import { uploadImageFromURL } from "./uploadImageFromURL.js";
+import { deleteFromCDN } from "./deleteFromCDN.js";
 
-export {
-  createAvatarThumbnails,
-  createThumbnail,
-  getPublicURL,
-  setProviderAvatar
-};
+export { createThumbnail, getPublicURL, uploadImageFromURL, deleteFromCDN };

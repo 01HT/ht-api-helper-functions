@@ -9,14 +9,15 @@
     "build": "babel *.js --out-dir lib"
   },
   "dependencies": {
+    "es6-promisify": "^6.0.0",
     "firebase-admin": "^5.12.0",
-    "path": "^0.12.7",
-    "sharp": "0.20.1",
     "fs": "0.0.1-security",
     "os": "^0.1.1",
-    "es6-promisify": "^6.0.0",
+    "path": "^0.12.7",
     "request-promise": "^4.2.2",
-    "uuid": "^3.3.2"
+    "sharp": "0.20.1",
+    "uuid": "^3.3.2",
+    "cloudinary": "^1.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
