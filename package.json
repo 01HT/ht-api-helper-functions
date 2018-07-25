@@ -1,6 +1,6 @@
 {
   "name": "@01ht/ht-api-helper-functions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "repository": "01ht/ht-api-helper-functions",
   "author": "01ht Ltd",
@@ -9,14 +9,6 @@
     "build": "babel *.js --out-dir lib"
   },
   "dependencies": {
-    "es6-promisify": "^6.0.0",
-    "firebase-admin": "^5.12.0",
-    "fs": "0.0.1-security",
-    "os": "^0.1.1",
-    "path": "^0.12.7",
-    "request-promise": "^4.2.2",
-    "sharp": "0.20.1",
-    "uuid": "^3.3.2",
     "cloudinary": "^1.11.0"
   },
   "devDependencies": {
