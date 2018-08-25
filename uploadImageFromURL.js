@@ -12,7 +12,7 @@ async function uploadImageFromURL(imageURL, public_id) {
     let promise = new Promise(resolve => {
       cloudinary.v2.uploader.upload(imageURL, options, function(error, result) {
         if (error) throw new Error(error);
-        resolve(`v${result.version}`);
+        resolve(result);
       });
     });
 
