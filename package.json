@@ -1,6 +1,6 @@
 {
   "name": "@01ht/ht-api-helper-functions",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "lib/index.js",
   "repository": "01ht/ht-api-helper-functions",
   "author": "01ht Ltd",
