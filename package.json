@@ -5,14 +5,7 @@
   "repository": "01ht/ht-api-helper-functions",
   "author": "01ht Ltd",
   "license": "UNLICENSED",
-  "scripts": {
-    "build": "babel *.js --out-dir lib"
-  },
   "dependencies": {
     "cloudinary": "^1.11.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
   }
 }

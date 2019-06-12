@@ -1,9 +1,8 @@
 "use strict";
+import * as functions from "firebase-functions";
 const cloudinary = require("cloudinary");
 
-const cloudinaryKey = require("../../../../cloudinary-api-key.json");
-
-cloudinary.config(cloudinaryKey);
+cloudinary.config(functions.config().cloudinary);
 
 async function deleteFromCDN(public_id, resource_type) {
   try {
