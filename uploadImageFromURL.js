@@ -1,8 +1,8 @@
 "use strict";
-import * as functions from "firebase-functions";
+import {config} from "firebase-functions";
 const cloudinary = require("cloudinary");
 
-cloudinary.config(functions.config().cloudinary);
+cloudinary.config(config().cloudinary);
 
 async function uploadImageFromURL(imageURL, public_id) {
   try {
