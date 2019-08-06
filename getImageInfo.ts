@@ -6,10 +6,10 @@ cloudinary.config(config().cloudinary);
 
 async function getImageInfo(public_id) {
   try {
-    let promise = new Promise(resolve => {
+    const promise = new Promise(resolve => {
       cloudinary.v2.api.resource(public_id, function(error, result) {
         if (error) throw new Error(error);
-        let imageData = {
+        const imageData = {
           public_id: result.public_id,
           format: result.format,
           version: result.version,

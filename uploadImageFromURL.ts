@@ -8,7 +8,7 @@ async function uploadImageFromURL(imageURL, public_id) {
   try {
     const options = { public_id: public_id };
 
-    let promise = new Promise(resolve => {
+    const promise = new Promise(resolve => {
       cloudinary.v2.uploader.upload(imageURL, options, function(error, result) {
         if (error) throw new Error(error);
         resolve(result);
